@@ -1,0 +1,73 @@
+﻿<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RBL Guard</title>
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body data-theme="dark">
+  <header class="topbar">
+    <div>
+      <h1>RBL Guard</h1>
+      <p>DNSBL/RBL Monitoring für Mail-Infrastruktur</p>
+    </div>
+    <div class="top-actions">
+      <button id="theme-toggle">Theme</button>
+      <button id="logout">Logout</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card" id="auth-card">
+      <h2>Login</h2>
+      <form id="login-form" class="stack">
+        <label>Email <input name="email" type="email" required /></label>
+        <label>Passwort <input name="password" type="password" required /></label>
+        <button type="submit">Anmelden</button>
+      </form>
+      <small>Standard-Seeds: admin@example.com / ChangeMeNow123!</small>
+    </section>
+
+    <section class="grid hidden" id="app-grid">
+      <article class="card">
+        <h3>Dashboard</h3>
+        <div class="kpi-grid" id="kpis"></div>
+      </article>
+
+      <article class="card">
+        <h3>Sofortprüfung</h3>
+        <form id="check-form" class="row">
+          <select name="target_type">
+            <option value="ipv4">IPv4</option>
+            <option value="ipv6">IPv6</option>
+            <option value="domain">Domain</option>
+            <option value="hostname">Hostname</option>
+          </select>
+          <input name="target_value" placeholder="z. B. 203.0.113.10" required />
+          <button type="submit">Prüfen</button>
+        </form>
+        <div id="check-result"></div>
+      </article>
+
+      <article class="card">
+        <div class="title-row">
+          <h3>Monitore</h3>
+          <button id="refresh-monitors">Aktualisieren</button>
+        </div>
+        <div id="monitor-list"></div>
+      </article>
+
+      <article class="card">
+        <div class="title-row">
+          <h3>Listen-Health</h3>
+          <button id="refresh-lists">Aktualisieren</button>
+        </div>
+        <div id="list-table"></div>
+      </article>
+    </section>
+  </main>
+
+  <script type="module" src="/static/js/app.js"></script>
+</body>
+</html>

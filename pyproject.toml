@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rbl-guard"
+version = "0.1.0"
+description = "Self-hosted DNSBL/RBL monitoring service"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "RBL Guard Contributors"}]
+dependencies = [
+  "fastapi==0.115.2",
+  "uvicorn[standard]==0.32.0",
+  "sqlalchemy==2.0.36",
+  "psycopg[binary]==3.2.3",
+  "alembic==1.14.0",
+  "pydantic==2.9.2",
+  "pydantic-settings==2.6.1",
+  "python-jose[cryptography]==3.3.0",
+  "passlib[argon2]==1.7.4",
+  "dnspython==2.7.0",
+  "httpx==0.27.2",
+  "apscheduler==3.10.4",
+  "email-validator==2.2.0",
+  "python-multipart==0.0.17",
+  "jinja2==3.1.4",
+  "structlog==24.4.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==8.3.3",
+  "pytest-asyncio==0.24.0",
+  "ruff==0.7.3",
+  "mypy==1.13.0"
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+asyncio_mode = "auto"
